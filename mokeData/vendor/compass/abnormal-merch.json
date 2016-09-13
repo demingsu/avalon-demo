@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "merch_name": "圣牧全程有机205g*12沙棘酸牛奶",
+      "stock": "364",
+      "collect": "-6",
+      "exp_dt": "2016-07-04",
+      "site_num": 20,
+      "merch_no": "540936"
+    },
+    {
+      "merch_name": "圣牧全程有机205g*12西瓜霜",
+      "stock": "364",
+      "collect": "-6",
+      "exp_dt": "2016-07-04",
+      "site_num": 20,
+      "merch_no": "540937"
+    },
+    {
+      "merch_name": "圣牧全程有机205g*12牛肉",
+      "stock": "364",
+      "collect": "-6",
+      "exp_dt": "2016-07-04",
+      "site_num": 20,
+      "merch_no": "540938"
+    },
+    {
+      "merch_name": "圣牧全程有机205g*12薯片",
+      "stock": "364",
+      "collect": "-6",
+      "exp_dt": "2016-07-04",
+      "site_num": 20,
+      "merch_no": "540939"
+    }
+  ],
+  "total": 14,
+  "pages": 3
+}

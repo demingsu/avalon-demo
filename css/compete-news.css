@@ -1,0 +1,347 @@
+body{
+    background-color: #ebeff2;
+}
+.rtl-gray{
+    background-color: #f6f8fa;
+}
+.rtl-pt0{
+    padding-top: 0;
+}
+.rtl-pb0{
+    padding-bottom: 0;
+}
+.rtl-nav-main{
+    border: #dce5ec solid 0px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.rtl-nav-main li a,
+.rtl-nav-main li a:focus,
+.rtl-nav-main li a:hover,
+.rtl-nav-main li a:active{
+    color: #222;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    outline: none;
+}
+.rtl-nav-main li a.active{
+    color: #666;
+    font-size: 14px;
+    cursor: default;
+}
+.icon-home{
+    background-image:url("../images/erp/home_page.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: -3px;
+    width: 20px;
+}
+.icon-home-next{
+    background-image: url("../images/erp/home_page_next.png");
+    background-repeat: no-repeat;
+    background-position: 2px 3px;
+    display: inline-block;
+    height: 20px;
+    vertical-align: middle;
+    width: 15px;
+}
+.breadcrumb > li + li:before{
+    content: '';
+    padding: 0;
+}
+.rtl-panel{
+    margin-bottom: 15px;
+    background-color: #f6f8fa;
+    border: solid 1px #d7d7d7;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.rtl-panel .panel-body{
+    background-color: #fff;
+}
+.rtl-panel .panel-heading{
+    border-bottom-color: #d7d7d7;
+}
+.rtl-panel .panel-heading .desc{
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+    line-height: 28px;
+    font-size: 16px;
+    color: #005bac;
+}
+.rtl-panel .panel-heading .bak-btn,
+.rtl-panel .panel-heading .bak-btn:focus,
+.rtl-panel .panel-heading .bak-btn:hover,
+.rtl-panel .panel-heading .bak-btn:active{
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+    line-height: 28px;
+    padding: 0;
+    float: right;
+    border: solid 1px #d7d7d7;
+    background-color: #f6f8fa;
+    min-width: 90px;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    outline: none;
+}
+.rtl-panel .list{
+    margin-bottom: 15px;
+    list-style: none;
+    padding: 0;
+}
+.rtl-panel .list li{
+    height: 48px;
+    line-height: 48px;
+    cursor: default;
+    border-bottom-style: dashed;
+    border-bottom-color: #d7d7d7;
+    border-bottom-width: 1px;
+}
+.rtl-panel .list .first-li{
+    border-bottom-style: solid;
+}
+.rtl-panel .list .first-li .desc{
+    display: inline-block;
+    vertical-align: middle;
+    color: #222;
+    font-size: 14px;
+}
+.rtl-panel .list .first-li .new-btn{
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    position: relative;
+    top: 10px;
+    width: 28px;
+    height: 28px;
+    background-image: url("../images/erp/compete-new-btn.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.rtl-panel .list .li .seq{
+    position: relative;
+    margin-left: 24px;
+    margin-right: 5px;
+    font-size: 12px;
+    color: #222;
+}
+.rtl-panel .list .li .abstract{
+    font-size: 12px;
+    color: #222;
+}
+.rtl-panel .list .li .status-default{
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 60px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #1ac561;
+    border: solid 1px #1ac561;
+    margin-left: 15px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.rtl-panel .list .li .status-publish{
+    color: #ffa516;
+    border-color: #ffa516;
+}
+.rtl-panel .list .li .date{
+    float: right;
+    position: relative;
+    margin-right: 25px;
+    font-size: 12px;
+    color: #999;
+}
+.rtl-panel .list .li .opt-default{
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    position: relative;
+    width: 18px;
+    height: 46px;
+    background-image: url("../images/erp/compete-new-mod.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.rtl-panel .list .li .del{
+    margin-right: 15px;
+    background-image: url("../images/erp/compete-new-del.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.news-edit-box .title{
+    height: 20px;
+    line-height: 20px;
+    display: block;
+    margin: 20px 0 10px;
+    position: relative;
+    color: #222222;
+}
+.news-edit-box .ipt{
+    width: 100%;
+    height: 60px;
+    line-height: 30px;
+    font-size: 14px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: solid 1px #d7d7d7;
+    resize: none;
+    background-color: #fff;
+    outline: none;
+}
+.news-edit-box .rich-content{
+    height: 400px;
+    line-height: 400px;
+}
+.news-edit-box .date-box .date-title{
+
+}
+.news-edit-box .date-box .date-ipt,
+.news-edit-box .date-box .date-ipt:focus,
+.news-edit-box .date-box .date-ipt:hover,
+.news-edit-box .date-box .date-ipt:active{
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 38px;
+    line-height: 38px;
+    width: 180px;
+    border-radius: 4px;
+    border: solid 1px #d7d7d7;
+    font-size: 14px;
+    color: #666;
+    padding: 0 10px;
+    outline: none;
+}
+.news-edit-box .btn-box{
+    padding: 20px 0 15px;
+}
+.news-edit-box .btn-box .cancel-btn{
+    position: relative;
+    float: left;
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    min-width: 90px;
+    background-color: #fff;
+    border: solid 1px #48a7f2;
+    text-align: center;
+    border-radius: 4px;
+    color: #48a7f2;
+    font-size: 14px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.news-edit-box .btn-box .def-btn{
+    color: #fff;
+    background-color: #48a7f2;
+}
+.news-edit-box .btn-box .right-btn{
+    float: right;
+    margin-right: 0;
+    margin-left: 30px;
+}
+.rtl-modal-layer{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.rtl-modal-layer .rtl-modal-box{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+.rtl-modal-layer .rtl-modal-content{
+    position: absolute;
+    top: 9.708737%;
+    right: 9.049773%;
+    bottom: 9.708737%;
+    left: 9.049773%;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+.rtl-modal-layer .rtl-modal-content .component{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.rtl-modal-layer .rtl-modal-content .header{
+    height: 78px;
+    border-bottom: solid 1px #d7d7d7;
+}
+.rtl-modal-layer .rtl-modal-content .header .title{
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    left: 50%;
+    margin-left: -64px;
+    margin-top: 27px;
+    font-size: 16px;
+    color: #222;
+}
+.rtl-modal-layer .rtl-modal-content .header .subtopic{
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    left: 50%;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #999;
+}
+.rtl-modal-layer .rtl-modal-content .header .exit{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/erp/modal-close-icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.rtl-modal-layer .rtl-modal-content .content{
+    position: absolute;
+    top: 78px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+.rtl-modal-layer .rtl-modal-content .content span{
+    display: block;
+    text-indent: 20px;
+}
+.rtl-modal-layer .rtl-modal-content .content img{
+    display: block;
+    margin: auto;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="UTF-8">
+        <title>数据罗盘</title>
+        <link href="images/title-logo.png" rel="shortcut icon" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <script type="text/javascript" src="./javascripts/core/requirejs/require.js" data-main="main"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="./javascripts/core/bootstrap/respond.min.js"></script>
+        <script type="text/javascript" src="./javascripts/core/bootstrap/html5shiv.min.js"></script>
+        <![endif]-->
+    </head>
+    <body ms-controller="mainBodyCtrl">
+        <!--顶部导航-->
+        <div class="header clearfix navbar-fixed-top">
+            <div class="pull-left">
+                <img src="images/logo.png">
+            </div>
+            <ul class="list-unstyled list-inline pull-right">
+                <li>
+                    <img data-toggle="modal" data-target="#myChoice" ms-click="getVendor" src="images/nav_caigoudanyuan.png">
+                </li>
+                <li>
+                    <img data-toggle="modal" data-target="#mySuggest" ms-click="clearSuggest" src="images/nav_fankui.png">
+                </li>
+                <li ms-click="lockScreen">
+                    <img src="images/nav_suoding.png">
+                </li>
+                <li ms-click="logout">
+                    <img src="images/nav_tuichu.png">
+                </li>
+            </ul>
+        </div>
+        <!--左边菜单-->
+        <div id="compassSidebar" class="sidebar navbar-fixed-top">
+            <ul class="list-unstyled">
+                <li ms-repeat="treeData" ms-class="{{el.url == 'home' ? 'list-blue' : ''}}" ms-attr-data-href="el.url !== '' ? el.url : ''">
+                    <div class="top-list" ms-class="{{el.url == 'home' ? 'top-list-first' : ''}}" ms-click="treeEvent">
+                        <img ms-attr-src="el.img">
+                        <span>{{el.desc}}</span>
+                    </div>
+                    <ul class="list-unstyled second-list" ms-if="el.list !== undefined && el.list.length > 0">
+                        <li ms-repeat-elem="el.list" ms-attr-data-href="elem.url" ms-click="treeEvent">
+                            <span>{{elem.desc}}</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--主内容区域-->
+        <div ms-include-src="contentPage" class="main"></div>
+        <!--锁屏-->
+        <div class="rtl-login" id="rtlLock">
+            <img class="rtl-login-bg" src="images/login-bg.png">
+            <div class="rtl-login-header">
+                <img class="rtl-login-top" src="images/login-top.png">
+                <div class="desc">
+                    <span class="title">数据罗盘</span>
+                    <span class="content">为供商提供大数据格局下的商业洞察</span>
+                </div>
+            </div>
+            <div class="rtl-login-body">
+                <span id="rtlLockUserName" class="name"></span>
+                <span class="desc">已锁定</span>
+                <div class="iptbox">
+                    <input id="loginInput" type="password" placeholder="请输入密码" autocomplete="off"/>
+                </div>
+                <div class="btn" id="loginInBtn" ms-click="lockLogin">登录</div>
+            </div>
+            <div class="rtl-login-footer">
+                <i></i>
+                <div class="left-desc">
+                    <span>物美集团版权所有&nbsp;京ICP备05040337</span>
+                </div>
+                <div class="right-desc">
+                    <span>总部地址：北京市海淀区西四环北路158-1号&nbsp;物美商业大厦</span>
+                </div>
+            </div>
+        </div>
+        <!--选项弹窗-->
+        <div class="modal fade rtl-modal" id="myChoice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">
+                            选项
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="choiceHeader">我的供商卡号<span>系统根据供应商卡号选择相应的经营范围，提供相关的行业经营数据</span></h4>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>供商号</th>
+                                <th>供商名</th>
+                                <th>经营范围</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr ms-repeat="vendorList">
+                                    <td>
+                                        <label class="choice-radio">
+                                            <input type="radio" checked>{{el.code}}
+                                        </label>
+                                    </td>
+                                    <td style="max-width:420px;">{{el.name}}</td>
+                                    <td>
+                                        <span ms-repeat-elem="el.ukes">{{elem.name}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--我要反馈弹窗-->
+        <div class="modal fade rtl-modal" id="mySuggest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="closeFeedback" type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            我要反馈
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <span class="rtl-modal-ct">您对我们的产品有任何想法，请告知我们，我们会在3个工作日内给予答复</span>
+                        <div class="rtl-modal-cf rtl-modal-index">
+                            <span class="cf-title">收件人</span>
+                            <input id="cfInput1" class="cf-ipt cf-ipt-gray" value="bigdata@wumart.com" type="text" readonly autocomplete="off"/>
+                        </div>
+                        <div class="rtl-modal-cf rtl-modal-index">
+                            <span class="cf-title">联系信息</span>
+                            <input id="cfInput2" class="cf-ipt" placeholder="请输入您的电话或邮箱" type="text" autocomplete="off"/>
+                        </div>
+                        <div class="rtl-modal-cf rtl-modal-index">
+                            <span class="cf-title">标题</span>
+                            <input id="cfInput3" class="cf-ipt" placeholder="物美数据罗盘反馈意见" type="text" autocomplete="off"/>
+                        </div>
+                        <div class="rtl-modal-cf">
+                            <span class="cf-title">正文</span>
+                            <textarea id="cfInput4" class="cf-area"></textarea>
+                        </div>
+                        <div>
+                            <div class="btn rtl-default-btn" ms-click="feedbackEvt">发送</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+[
+  {
+    "list_hours": 1,
+    "rank": 1,
+    "rank_change": 1,
+    "saleamt": "0.05",
+    "salenum": "9",
+    "site_name": "西黄村店",
+    "site_type": "物美标超"
+  },
+  {
+    "list_hours": 1,
+    "rank": 2,
+    "rank_change": -2,
+    "saleamt": "0.05",
+    "salenum": "9",
+    "site_name": "西黄村店",
+    "site_type": "物美标超"
+  },
+  {
+    "list_hours": 1,
+    "rank": 3,
+    "rank_change": 0,
+    "saleamt": "0.05",
+    "salenum": "9",
+    "site_name": "西黄村店",
+    "site_type": "物美标超"
+  },
+  {
+    "list_hours": 1,
+    "rank": 4,
+    "rank_change": 2,
+    "saleamt": "0.05",
+    "salenum": "9",
+    "site_name": "西黄村店",
+    "site_type": "物美标超"
+  },
+  {
+    "list_hours": 1,
+    "rank": 5,
+    "rank_change": -4,
+    "saleamt": "0.05",
+    "salenum": "9",
+    "site_name": "西黄村店",
+    "site_type": "物美标超"
+  }
+]

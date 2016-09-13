@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "rank_amt": 1,
+      "saleamt": "364.02",
+      "salenum": "8227",
+      "brand": "圣牧1",
+      "rank_amt_change": 2,
+      "list_days": 3
+    },
+    {
+      "rank_amt": 2,
+      "saleamt": "364.02",
+      "salenum": "8227",
+      "brand": "圣牧2",
+      "rank_amt_change": 1,
+      "list_days": 3
+    },{
+      "rank_amt": 3,
+      "saleamt": "364.02",
+      "salenum": "8227",
+      "brand": "圣牧3",
+      "rank_amt_change": -1,
+      "list_days": 3
+    },{
+      "rank_amt": 4,
+      "saleamt": "364.02",
+      "salenum": "8227",
+      "brand": "圣牧4",
+      "rank_amt_change": -2,
+      "list_days": 3
+    }
+  ],
+  "total": 13,
+  "pages": 2
+}

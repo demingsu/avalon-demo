@@ -1,0 +1,34 @@
+[
+  {
+    "rank": 1,
+    "site_name": "大兴龙湖店",
+    "bezei": "大兴区",
+    "indu_name": "物美大卖场",
+    "rank_change": 2,
+    "list_days": 3
+  },
+  {
+    "rank": 2,
+    "site_name": "大兴龙湖店",
+    "bezei": "大兴区",
+    "indu_name": "物美大卖场",
+    "rank_change": -2,
+    "list_days": 3
+  },
+  {
+    "rank": 3,
+    "site_name": "大兴龙湖店",
+    "bezei": "大兴区",
+    "indu_name": "物美大卖场",
+    "rank_change": 3,
+    "list_days": 3
+  },
+  {
+    "rank": 4,
+    "site_name": "大兴龙湖店",
+    "bezei": "大兴区",
+    "indu_name": "物美大卖场",
+    "rank_change": -1,
+    "list_days": 3
+  }
+]

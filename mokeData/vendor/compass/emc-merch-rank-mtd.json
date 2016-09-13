@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "emc_name": "热带水果类",
+      "rank_amt_emc": 1,
+      "rank_amt_change": 1,
+      "rank_amt_vendor": 1,
+      "saleamt": "381.60",
+      "salenum": "5990",
+      "sku": "000000000000258114",
+      "sku_name": "橙子橙子橙子橙子橙子橙子橙子橙子橙子橙子橙子橙子橙子橙子"
+    },
+    {
+      "emc_name": "热带水果类",
+      "rank_amt_emc": 2,
+      "rank_amt_change": -2,
+      "rank_amt_vendor": 2,
+      "saleamt": "281.60",
+      "salenum": "4990",
+      "sku": "000000000000258113",
+      "sku_name": "苹果"
+    },
+    {
+      "emc_name": "热带水果类",
+      "rank_amt_emc": 3,
+      "rank_amt_change": 0,
+      "rank_amt_vendor": 3,
+      "saleamt": "181.60",
+      "salenum": "3990",
+      "sku": "000000000000258112",
+      "sku_name": "西瓜"
+    }
+  ],
+  "total": 37,
+  "pages": 5
+}

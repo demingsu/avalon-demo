@@ -1,0 +1,57 @@
+[
+  {
+    "in_rank": 1,
+    "price": "6.80",
+    "rank": 1,
+    "rank_change": 0,
+    "saleamt": "0.11",
+    "saleqty": "19",
+    "sitename": "明光桥西店1",
+    "sitestock": "100",
+    "sitetype": "物美大卖场"
+  },
+  {
+    "in_rank": 1,
+    "price": "6.80",
+    "rank": 1,
+    "rank_change": -2,
+    "saleamt": "0.11",
+    "saleqty": "19",
+    "sitename": "明光桥西店2",
+    "sitestock": "100",
+    "sitetype": "物美大卖场"
+  },
+  {
+    "in_rank": 1,
+    "price": "6.80",
+    "rank": 1,
+    "rank_change": 1,
+    "saleamt": "0.11",
+    "saleqty": "19",
+    "sitename": "明光桥西店3",
+    "sitestock": "100",
+    "sitetype": "物美大卖场"
+  },
+  {
+    "in_rank": 1,
+    "price": "6.80",
+    "rank": 1,
+    "rank_change": 5,
+    "saleamt": "0.11",
+    "saleqty": "19",
+    "sitename": "明光桥西店4",
+    "sitestock": "100",
+    "sitetype": "物美大卖场"
+  },
+  {
+    "in_rank": 1,
+    "price": "6.80",
+    "rank": 1,
+    "rank_change": -4,
+    "saleamt": "0.11",
+    "saleqty": "19",
+    "sitename": "明光桥西店5",
+    "sitestock": "100",
+    "sitetype": "物美大卖场"
+  }
+]

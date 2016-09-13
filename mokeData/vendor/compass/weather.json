@@ -1,0 +1,30 @@
+[
+  {
+    "date": "20160728",
+    "week": "周四",
+    "weather": "阴转多云",
+    "wind": "微风",
+    "temperature": "23~33℃"
+  },
+  {
+    "date": "20160729",
+    "week": "周五",
+    "weather": "中雪-大雪",
+    "wind": "微风",
+    "temperature": "25~32℃"
+  },
+  {
+    "date": "20160730",
+    "week": "周六",
+    "weather": "阴转多云",
+    "wind": "微风",
+    "temperature": "25~32℃"
+  },
+  {
+    "date": "20160731",
+    "week": "周日",
+    "weather": "晴转小雨",
+    "wind": "微风",
+    "temperature": "26~33℃"
+  }
+]

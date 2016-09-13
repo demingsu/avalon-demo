@@ -1,0 +1,62 @@
+[
+  {
+    "brand": "宾堡1",
+    "in_rank": 1,
+    "promo_id": "0060733124",
+    "rank": 1,
+    "rank_change": 0,
+    "saleamt": "0.91",
+    "saleqty": "156",
+    "sku": "413154",
+    "sku_name": "宾堡400g本色全麦切片面包",
+    "topic": "4厂商周"
+  },
+  {
+    "brand": "宾堡2",
+    "in_rank": 1,
+    "promo_id": "0060733124",
+    "rank": 1,
+    "rank_change": 4,
+    "saleamt": "0.91",
+    "saleqty": "156",
+    "sku": "413154",
+    "sku_name": "宾堡400g本色全麦切片面包",
+    "topic": "4厂商周"
+  },
+  {
+    "brand": "宾堡3",
+    "in_rank": 1,
+    "promo_id": "0060733124",
+    "rank": 1,
+    "rank_change": -2,
+    "saleamt": "0.91",
+    "saleqty": "156",
+    "sku": "413154",
+    "sku_name": "宾堡400g本色全麦切片面包",
+    "topic": "4厂商周"
+  },
+  {
+    "brand": "宾堡4",
+    "in_rank": 1,
+    "promo_id": "0060733124",
+    "rank": 1,
+    "rank_change": -3,
+    "saleamt": "0.91",
+    "saleqty": "156",
+    "sku": "413154",
+    "sku_name": "宾堡400g本色全麦切片面包",
+    "topic": "4厂商周"
+  },
+  {
+    "brand": "宾堡5",
+    "in_rank": 1,
+    "promo_id": "0060733124",
+    "rank": 1,
+    "rank_change": 2,
+    "saleamt": "0.91",
+    "saleqty": "156",
+    "sku": "413154",
+    "sku_name": "宾堡400g本色全麦切片面包",
+    "topic": "4厂商周"
+  }
+]

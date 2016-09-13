@@ -1,0 +1,51 @@
+<div ms-controller="competeAnalysisCtrl" class="container-fluid magb15">
+    <div class="row alert-blue">
+        <i class="competeTips"></i>
+        <span>根据您经营的商品，我们自动为您选择具有竞争或替代性质商品的经营信息。出于保护商业秘密的原因。该商品已隐去商品名称相关的信息，该商品的其它信息在发生变化时会及时更新以供参考。</span>
+    </div>
+    <div class="row box">
+        <div class="box-head">
+            <i class="compete"></i><span>竞争对比</span>
+        </div>
+        <div class="box-titles clearfix">
+            <div class="clearfix magb15">
+                <div class="box-title">产品销售趋势对比</div>
+                <span class="rtl-color7a8">数据收集时间:{{createData.last_shop_hour_end}}</span>
+                <div class="box-input form-inline pull-right ">
+                    <div id="timepicker" class="pull-right"></div>
+                    <input id="goodSku" class="form-control mr10" type="text" placeholder="输入商品SKU" autocomplete="off">
+                </div>
+            </div>
+            <div class="box-btn box-btn-blue pull-right" ms-click="compareSearch">查询</div>
+            <div class="customer-box-title" ms-if="goodName!=''" style="padding-left: 18px;">商品名称： {{goodName}}</div>
+        </div>
+        <div id="compareTotalChart" class="charts rtl-chart-zIndex"></div>
+        <div class="box-titles clearfix">
+            <div class="clearfix magb15">
+                <div class="box-title">用户特征对比</div>
+                <span class="rtl-color7a8">数据收集时间:{{createData.last_shop_hour_end}}</span>
+            </div>
+        </div>
+        <div class="customer-box-title" ms-if="goodName!=''" style="margin-top: 17px;padding-left: 18px;">商品名称： {{goodName}}</div>
+        <div class="box-pane row">
+            <div class="panes col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="pane-head">
+                    <i class="yourProduct"></i><span>您的产品</span>
+                </div>
+                <div id="compareLine10" class="pane-blue compare-box rtl-chart-zIndex"></div>
+                <div id="compareLine20" class="pane-blue compare-box rtl-chart-zIndex"></div>
+                <div id="compareLine30" class="pane-blue compare-box rtl-chart-zIndex"></div>
+                <div id="compareCircle10" class="pane-blue compare-box rtl-chart-zIndex"></div>
+            </div>
+            <div class="panes col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="pane-head">
+                    <i class="competeProduct"></i><span>竞品</span>
+                </div>
+                <div id="compareLine11" class="pane-orange compare-box rtl-chart-zIndex"></div>
+                <div id="compareLine21" class="pane-orange compare-box rtl-chart-zIndex"></div>
+                <div id="compareLine31" class="pane-orange compare-box rtl-chart-zIndex"></div>
+                <div id="compareCircle11" class="pane-orange compare-box rtl-chart-zIndex"></div>
+            </div>
+        </div>
+    </div>
+</div>

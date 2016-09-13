@@ -1,0 +1,219 @@
+<div ms-controller="promotionAnalysisCtrl" class="page-promotion-Analysis">
+    <div class="box">
+        <div class="box-hd">
+            <h3 class="title"><i class="png ico-sales"></i>促销期间实时数据(每小时更新)</h3>
+        </div>
+        <div class="box-bd">
+            <div class="head clearfix">
+                <div class="fl">实时商品销售排行榜<small>数据收集时间:<span>{{createData.last_shop_hour_end}}</span></small></div>
+            </div>
+            <div class="box-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>销售额排名</th>
+                        <th>总销售额(千元)</th>
+                        <th>总销售量</th>
+                        <th>商品名称</th>
+                        <th>促销主题</th>
+                        <th>商品编号</th>
+                        <th>商品品牌</th>
+                        <th><a class="sort promotionSort" month-sort="amt_change" ms-click="sortEvt">排名变化</a></th>
+                        <th>在榜时间(小时)</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ms-repeat="createData.tableList">
+                        <td>{{el.rank}}</td>
+                        <td>{{el.saleamt}}</td>
+                        <td>{{el.saleqty}}</td>
+                        <td class="good-name">
+                            <div class="tooltip-show rtl-tips-box" data-toggle="tooltip" data-placement="right" ms-attr-title="{{el.sku_name}}">{{el.sku_name}}
+                            </div>
+                        </td>
+                        <td>{{el.topic}}</td>
+                        <td class="good-sku">{{el.sku}}</td>
+                        <td>{{el.brand}}</td>
+                        <td><a ms-class="{{el.rank_change>0?'up':(el.rank_change<0?'down':'')}}">{{el.rank_change<0?Math.abs(el.rank_change):el.rank_change}}</a></td>
+                        <td>{{el.in_rank}}</td>
+                        <td class="none promo-id">{{el.promo_id}}</td>
+                        <td class="options">
+                            <span data-toggle="modal" data-target="#myModal" ms-click="seeDetails">显示详情</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="height: 20px; background-color: #ebeff2;"></div>
+    <div class="box">
+        <div class="box-hd">
+            <h3 class="title"><i class="png ico-sales-data"></i>促销日数据(每日更新)</h3>
+        </div>
+        <div class="box-bd">
+            <div class="head clearfix">
+                <div class="fl">
+                    促销档期销售曲线(含促销前后1周)<small>数据收集时间:<span>{{createData.last_shop_hour_end}}</span></small>
+                </div>
+                <div class="pa" style="right: 40px;">
+                    <div class="form-search-box" style="width: 345px;left: 110px;z-index: 99;">
+                        <input id="promoSku" class="form-control" type="text" placeholder="输入商品SKU" autocomplete="off" style="left: 20px;"/>
+                        <input id="siteChoice" class="form-control png storeCheck input-readonly-white" autocomplete="off" style="left: 187px;" type="text" placeholder="选择门店" readonly/>
+                        <div class="pa rtl-menu-box" style="right: 4px;top: 40px;">
+                            <h3 class="title">按区域搜索</h3>
+                            <div class="search-main-box">
+                                <input id="siteInputBox" class="form-control mb10" type="text" autocomplete="off" ms-on-keyup="autoEvt"/>
+                                <div class="search-list" ms-visible="autoCompleteArray.length>0">
+                                    <ul class="list-unstyled">
+                                        <li ms-click="setSiteOne" ms-repeat="autoCompleteArray" ms-attr-value="el.code">{{el.name}}</li>
+                                    </ul>
+                                </div>
+                                <div class="search-area">
+                                    <span>支持华北地区门店（北京、天津、河北）</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-search-box" style="top: 50px;left: 22px;z-index: 9;">
+                        <div class="rtl-drop-down">
+                            <input id="promoTimeInput" type="text" ms-duplex="createData.yearStr" placeholder="选择年份" class="form-control png storeCheck" autocomplete="off" readonly>
+                            <div class="rtl-drop-down-year">
+                                <div class="checkbox-inline" ms-repeat="createData.yearList" ms-click="chooseYear">
+                                    <!--这里要做一层遮罩,不然checkbox可以单独点击,尽是些奇葩问题-->
+                                    <div class="year-shade-box"></div>
+                                    <input class="year-input" type="checkbox" disabled> <span>{{el}}</span>
+                                </div>
+                            </div>
+                            <div class="box-btn box-btn-blue" style="position: absolute;right: 0;top: 0;" ms-click="seeYearChart">查询</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div id="promotionChart" class="map-box rtl-chart-zIndex"></div>
+            </div>
+            <div class="box-bd">
+                <div class="head clearfix">
+                    <div class="fl fl-none">促销档期说明</div>
+                </div>
+                <div class="box-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>图示</th>
+                                <th>年份</th>
+                                <th>促销周期</th>
+                                <th>促销主题</th>
+                                <th>促销期间定价</th>
+                                <th>促销期间销售额</th>
+                                <th>促销前1周销售额</th>
+                                <th>促销后1周销售额</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ms-if="promoBlue.length>0">
+                                <td><i ms-class="bg-blue"></i></td>
+                                <td>{{promoBlue[0]}}</td>
+                                <td>{{promoBlue[1]}}</td>
+                                <td>{{promoBlue[2]}}</td>
+                                <td>{{promoBlue[3]}}</td>
+                                <td>{{promoBlue[4]}}</td>
+                                <td>{{promoBlue[5]}}</td>
+                                <td>{{promoBlue[6]}}</td>
+                            </tr>
+                            <tr ms-if="promoRed.length>0">
+                                <td><i ms-class="bg-red"></i></td>
+                                <td>{{promoRed[0]}}</td>
+                                <td>{{promoRed[1]}}</td>
+                                <td>{{promoRed[2]}}</td>
+                                <td>{{promoRed[3]}}</td>
+                                <td>{{promoRed[4]}}</td>
+                                <td>{{promoRed[5]}}</td>
+                                <td>{{promoRed[6]}}</td>
+                            </tr>
+                            <tr ms-if="promoYellow.length>0">
+                                <td><i ms-class="bg-yellow"></i></td>
+                                <td>{{promoYellow[0]}}</td>
+                                <td>{{promoYellow[1]}}</td>
+                                <td>{{promoYellow[2]}}</td>
+                                <td>{{promoYellow[3]}}</td>
+                                <td>{{promoYellow[4]}}</td>
+                                <td>{{promoYellow[5]}}</td>
+                                <td>{{promoYellow[6]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 20px; background-color: #ebeff2;"></div>
+    <!--隐藏促销预测模块-->
+    <div class="box" style="display: none;">
+        <div class="box-hd">
+            <h3 class="title"><i class="png ioc-yuce"></i>促销预测</h3>
+        </div>
+        <div class="box-bd">
+            <div class="content" style="width: 100%;">
+                <div class="forecast clearfix">
+                    <div class="fl png img-data"></div>
+                    <div class="fr">
+                        <p><i class="png ico-info"></i>商品促销预测数值仅供参考。点击"去预测"会跳转至专题工具>销量预测进行预测。</p>
+                        <p>我们的预测算法在不断改进中,欢迎您通过各种方式给予我们反馈:</p>
+                        <p><i class="png ico-mail">:</i>luopan@wumart.com <i class="png ico-tel ml30">:</i>010-88259488</p>
+                        <div class="box-btn box-btn-blue pull-right" ms-click="goForecast">去测试</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade rtl-modal-fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        畅销TOP10门店(每小时更新)
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box">
+                        <div class="box-table">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>今日销售额排名</th>
+                                    <th>今日销售额(千元)</th>
+                                    <th>今日销量</th>
+                                    <th>门店名称</th>
+                                    <th>门店库存</th>
+                                    <th>实时定价</th>
+                                    <th><a class="sort promotionModalSort" month-sort="amt_change" ms-click="modalSortEvt">排名变化</a></th>
+                                    <th>在帮时间(小时)</th>
+                                    <th>门店类型</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ms-repeat="createData.modalList">
+                                    <td>{{el.rank}}</td>
+                                    <td>{{el.saleamt}}</td>
+                                    <td>{{el.saleqty}}</td>
+                                    <td>{{el.sitename}}</td>
+                                    <td>{{el.sitestock}}</td>
+                                    <td>{{el.price}}</td>
+                                    <td><a ms-class="{{el.rank_change>0?'up':(el.rank_change<0?'down':'')}}">{{el.rank_change<0?Math.abs(el.rank_change):el.rank_change}}</a></td>
+                                    <td>{{el.in_rank}}</td>
+                                    <td>{{el.sitetype}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

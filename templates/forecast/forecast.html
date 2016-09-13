@@ -1,0 +1,53 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        var iframeHeight = function () {
+            var _height = $(window).height();
+            $('.container-forecast').height(_height);
+        };
+        window.onresize = iframeHeight;
+        $(function () {
+            iframeHeight();
+        });
+        $('.btn-primary').on('click', function () {
+            $(".rtl-modal").show();
+        });
+        $('.close-icon').on('click', function () {
+            $(".rtl-modal").hide();
+        });
+    });
+</script>
+<div ms-controller="forecastCtrl" class="container-forecast pr">
+    <div class="pr forecast-hd">
+        <div class="head pa"><i class="png ioc-yuce"></i>我的销量预测</div>
+        <div class="form-inline pa">
+            <div class="form-group">
+                <input class="form-control rtl-analysis-fr" type="text" placeholder="堆头信息" autocomplete="off"/>
+                <input class="form-control rtl-analysis-fr" type="text" placeholder="促销价格" autocomplete="off"/>
+                <input class="form-control rtl-analysis-fr" type="text" placeholder="商品价格" autocomplete="off"/>
+                <select class="form-control rtl-analysis-fr">
+                    <option value="">所有门店</option>
+                </select>
+                <input class="form-control rtl-analysis-fr" type="text" placeholder="输入SKU"/>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group btn-box" style="margin-right: 25px;">
+                <div class="box-btn box-btn-blue" ms-click="forecast">开始预测</div>
+            </div>
+        </div>
+    </div>
+    <div class="forecast-box">
+        <div class="result">
+            <span class="hide">12,345.69</span>
+            <span class="count">计算中<em>...</em></span>
+        </div>
+    </div>
+</div>
+<div class="rtl-modal">
+    <div class="layer"></div>
+    <div class="box">
+        <div class="title">提示<i class="close-icon"></i></div>
+        <div class="info-icon"></div>
+        <div class="desc">请提供所有选项一边我们为您查询，谢谢。</div>
+        <div class="confirm-btn">确定</div>
+    </div>
+</div>

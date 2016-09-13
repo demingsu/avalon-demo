@@ -1,0 +1,42 @@
+[
+  {
+    "brand": "水果",
+    "list_days": 4,
+    "rank": 1,
+    "rank_change": 0,
+    "saleamt": "43.32",
+    "salenum": "4749",
+    "sku": "000000000000258111",
+    "sku_name": "西瓜"
+  },
+  {
+    "brand": "水果",
+    "list_days": 3,
+    "rank": 2,
+    "rank_change": 2,
+    "saleamt": "33.32",
+    "salenum": "3749",
+    "sku": "000000000000258112",
+    "sku_name": "苹果"
+  },
+  {
+    "brand": "水果",
+    "list_days": 2,
+    "rank": 3,
+    "rank_change": -1,
+    "saleamt": "23.32",
+    "salenum": "1749",
+    "sku": "000000000000258113",
+    "sku_name": "橙子"
+  },
+  {
+    "brand": "水果",
+    "list_days": 1,
+    "rank": 4,
+    "rank_change": -2,
+    "saleamt": "13.32",
+    "salenum": "2749",
+    "sku": "000000000000258114",
+    "sku_name": "橘子"
+  }
+]

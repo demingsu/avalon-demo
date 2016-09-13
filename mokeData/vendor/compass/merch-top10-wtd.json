@@ -1,0 +1,34 @@
+[
+  {
+    "brand": "三元",
+    "list_days": 1,
+    "rank": 1,
+    "rank_change": 3,
+    "saleamt": "95.34",
+    "sku_name": "三元243ml特品袋奶"
+  },
+  {
+    "brand": "三元",
+    "list_days": 1,
+    "rank": 2,
+    "rank_change": 4,
+    "saleamt": "94.34",
+    "sku_name": "三元243ml特品袋奶"
+  },
+  {
+    "brand": null,
+    "list_days": 1,
+    "rank": 3,
+    "rank_change": -1,
+    "saleamt": "93.34",
+    "sku_name": "三元243ml特品袋奶"
+  },
+  {
+    "brand": "三元",
+    "list_days": 1,
+    "rank": 4,
+    "rank_change": -2,
+    "saleamt": "92.34",
+    "sku_name": "三元243ml特品袋奶"
+  }
+]

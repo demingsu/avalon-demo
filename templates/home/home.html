@@ -1,0 +1,216 @@
+<div ms-controller="homeCtrl" class="container-fluid" style="background: #ebeff2;">
+    <div class="row">
+        <div class="home-header">
+            <div class="home-header-left">
+                <div class="home-header-cont pull-left">
+                    <div class="home-monthly">
+                        <div class="home-monthly-header">
+                            <div class="pull-left">
+                                <h4>当月指标</h4>
+                            </div>
+                            <div class="pull-left text-center">
+                                <div class="home-monthly-top home-monthly-blue">
+                                    <img src="images/blue.png">
+                                    <span>月总销售额</span>
+                                </div>
+                                <div class="home-monthly-middle">{{createData.totalSale}}(千元)</div>
+                                <div class="home-monthly-bottom">
+                                    <span>上月同期</span>
+                                    <img ms-if="createData.totalSale>createData.lastTotalSale" src="images/up.png">
+                                    <img ms-if="createData.totalSale<createData.lastTotalSale" src="images/down.png">
+                                </div>
+                            </div>
+                            <div class="pull-left text-center">
+                                <div class="home-monthly-top home-monthly-red">
+                                    <img src="images/red.png">
+                                    <span>月总净进货额</span>
+                                </div>
+                                <div class="home-monthly-middle">{{createData.totalCost}}(千元)</div>
+                                <div class="home-monthly-bottom">
+                                    <span>上月同期</span>
+                                    <img ms-if="createData.totalCost>createData.lastTotalCost" src="images/up.png">
+                                    <img ms-if="createData.totalCost<createData.lastTotalCost" src="images/down.png">
+                                </div>
+                            </div>
+                            <div class="pull-left" style="position: relative;">
+                                <span class="home-tab-box-title" style="top: 26px;" ms-click="goBusinessIndicators">查看详情 &gt;</span>
+                            </div>
+                        </div>
+                        <div id="homeMonthChart" class="rtl-chart-zIndex"></div>
+                    </div>
+                    <div class="home-total-sales">
+                        <div class="margin-right15 home-sales">
+                            <p class="home-sales-font">今日汇总销售额</p>
+                            <p class="home-sales-per-font">{{createData.twoHoursSale}}千元</p>
+                            <i class="icon-sales pull-right"></i>
+                        </div>
+                        <div class="home-sales-img-div">
+                            <div class="home-sales-img">
+                                <div class="home-sales-header">
+                                    <span class="pull-left">日销售额走势(千元)</span>
+                                    <span class="pull-right" ms-click="goCommodityAnalysis">查看详情 &gt;</span>
+                                </div>
+                                <div id="homeSalesChart" class="rtl-chart-zIndex"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right home-header-right">
+                <div class="margin-bottom15 home-rate-div home-stock">
+                    <p class="home-rate-font">高库存占比</p>
+                    <div><span class="home-per-font">{{createData.highStock}}</span></div>
+                    <i class="icon-stock pull-right"></i>
+                </div>
+                <div class="margin-bottom15 home-rate-div home-getgoods">
+                    <p class="home-rate-font">到货满足率</p>
+                    <div><span class="home-per-font">{{createData.rcvRate}}</span></div>
+                    <i class="icon-getgoods pull-right"></i>
+                </div>
+                <div class="margin-bottom15 home-rate-div home-refundgoods">
+                    <p class="home-rate-font">退货率</p>
+                    <div><span class="home-per-font">{{createData.returnRate}}</span></div>
+                    <i class="icon-refundgoods pull-right"></i>
+                </div>
+                <div class="margin-bottom15 home-rate-div home-weather-div">
+                    <p class="home-rate-font">今日北京天气 <span>{{weatherArray.top.weather}}</span></p>
+                    <div class="weather-big-box text-center">
+                        <div class="weather-big">
+                            <img ms-class="weatherArray.top.left?'pull-left':''" ms-if="weatherArray.top.left" ms-attr-src="weatherArray.top.left">
+                            <img class="pull-right" ms-if="weatherArray.top.right" ms-attr-src="weatherArray.top.right">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="weather-big-num">{{weatherArray.top.temp}}</div>
+                    </div>
+                    <ul class="list-unstyled list-inline">
+                        <li class="text-center" ms-repeat="weatherArray.bottom">
+                            <div class="weather-small-box">
+                                <img ms-class="el.left?'pull-left':''" ms-if="el.left" ms-attr-src="el.left">
+                                <img class="pull-right" ms-if="el.right" ms-attr-src="el.right">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="weather-small-font">{{el.week}}</div>
+                            <div class="weather-small-font">{{el.temp}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="home-content">
+            <span class="home-tab-box-title" ms-click="goDetailHtml">查看详情 &gt;</span>
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab1" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">周畅销商品</a></li>
+                    <li role="presentation"><a href="#tab2" role="tab" id="profile-tab1" data-toggle="tab" aria-expanded="false" ms-click="getAbnormal">异常商品</a></li>
+                    <li role="presentation"><a href="#tab3" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true" ms-click="getCustomer">顾客画像</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabl" class="tab-pane active in home-sales-table" id="tab1">
+                        <table class="margin-top15 table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>销售额排名</th>
+                                <th><a class="sort desc" ms-click="tableSortEvt">销售额(千元)</a></th>
+                                <th>商品名称</th>
+                                <th>商品品牌</th>
+                                <th><a class="sort" ms-click="tableSortEvt">排名变化</a></th>
+                                <th>在榜时间(天)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ms-repeat="createData.tabTableList">
+                                <td>{{el.rank}}</td>
+                                <td>{{el.saleamt}}</td>
+                                <td class="good-name"><a class="tooltip-show rtl-tips-box" data-toggle="tooltip" data-placement="right" ms-attr-title="{{el.sku_name}}">{{el.sku_name}}</a></td>
+                                <td>{{el.brand==null?'':el.brand}}</td>
+                                <td>
+                                    <a ms-if="el.rank_change>0" class="up">{{el.rank_change}}</a>
+                                    <a ms-if="el.rank_change==0">{{el.rank_change}}</a>
+                                    <a ms-if="el.rank_change<0" class="down">{{Math.abs(el.rank_change)}}</a>
+                                </td>
+                                <td>{{el.list_days}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tab2" class="tab-pane" id="tab2">
+                        <div id="homeAbnormalGoodsChart" class="rtl-chart-zIndex"></div>
+                        <div class="home-abnormal-box">
+                            <div class="home-abnormal-title">按异常商品种类统计</div>
+                            <div class="home-abnormal-subtitle">(所有异常商品占所有商品种类的<span>{{createData.abnormalPercent}}</span>%)</div>
+                        </div>
+                    </div>
+                    <div role="tab3" class="tab-pane home-img-div clearfix" id="tab3">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb15" style="padding-left: 0;">
+                            <div class="box-title" style="border-left: none;padding-left: 0;">商品名称:{{createData.customerGoodName}}</div>
+                            <span class="rtl-color7a8">数据收集时间:{{createData.last_shop_hour_end}}</span>
+                        </div>
+                        <div class="col-xs-6 col-md-6 home-padding0">
+                            <div class="home-per-img margin-right15">
+                                <span class="title">性别构成</span>
+                                <div id="sexChart" class="content customer-chart rtl-chart-zIndex"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-6 home-padding0">
+                            <div class="home-per-img">
+                                <span class="title">年龄构成</span>
+                                <div id="ageChart" class="content customer-chart rtl-chart-zIndex"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-md-6 home-padding0">
+                            <div class="home-per-img margin-right15 margin-top15">
+                                <span class="title">会员等级</span>
+                                <div id="levelChart" class="content customer-chart rtl-chart-zIndex"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-6 home-padding0 margin-top15">
+                            <div class="home-per-img">
+                                <span class="title">购买方式</span>
+                                <div id="payChart" class="content customer-chart rtl-chart-zIndex"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="home-footer margin-top15">
+            <div class="home-compass-info col-xs-8 col-sm-8 col-md-8 col-lg-8 home-padding0 home-bottom-mar15">
+                <div class="home-compass-font"><i class="icon-ribao"></i>罗盘信息</div>
+                <div class="home-compass-div">
+                    <div class="clearfix" ms-repeat="createData.infoList">
+                        <p class="pull-left compass-info" ms-attr-value="el.id" ms-click="goCompassIntroduce">{{el.title}}</p> <p class="pull-right  home-compass-font12">{{el.publishTime | date('yyyy-MM-dd')}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="home-big-data col-xs-4 col-sm-4 col-md-4 col-lg-4 home-padding0 home-bottom-mar15">
+                <div class="clearfix home-compass-font"><span><i class="icon-data"></i>大数据应用案例</span><span class="pull-right home-compass-font12">(更新至第{{createData.bigDataCount}}集)</span>
+                </div>
+                <div class="home-compass-div">
+                    <h5 class="home-compass-them">{{createData.bigDataTitle}}</h5>
+                    <p class="home-compass-content big-data-ellipsis"></p>
+                    <p class="home-compass-detail text-right" id="reviewDetail" ms-attr-value="createData.bigDataId" ms-click="goCompassCase">查看详情 &gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--免责声明-->
+    <div class="modal fade rtl-modal" id="myRelief" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        免责声明
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <div class="box-btn box-btn-blue" data-dismiss="modal">接受</div>
+                    <div class="box-btn box-btn-white" ms-click="refuseRelief">拒绝</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

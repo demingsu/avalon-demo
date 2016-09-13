@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft YaHei','微软雅黑';
+}
+body{
+    background: #fff;
+}
+.compass-introduce-header{
+    height: 70px;
+    line-height: 70px;
+    padding-left: 13px;
+    font-size: 24px;
+    color: #0D172E;
+    border-bottom: 1px solid #D9E3EA;
+}
+.compass-introduce-main:after{
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+.compass-introduce-left{
+    width: 200px;
+    float: left;
+    height: 500px;
+}
+.compass-introduce-right{
+    margin-left: 200px;
+    min-height: 900px;
+    border-left: 1px solid #D9E3EA;
+}
+.compass-introduce-left>ul>li{
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    height: 120px;
+    border-bottom: 1px solid #D9E3EA;
+    padding: 15px 9px 20px;
+}
+.compass-introduce-left>ul>li.active{
+    border-left: 4px solid #5584ff;
+}
+.compass-introduce-title{
+    font-size: 16px;
+    color: #222;
+    margin-bottom: 21px;
+}
+.compass-case{
+    width: 80%;
+    margin: 0 auto;
+}
+.compass-introduce-left .ellipsis{
+    font-size: 14px;
+    color: #354052;
+}
+.compass-introduce-right>h4,.compass-case>h4{
+    margin: 0 auto;
+    padding: 41px 0 30px;
+    width: 90%;
+    border-bottom: 1px solid #D7D7D7;
+    text-align: center;
+    color: #0D172E;
+    font-size: 20px;
+}
+.compass-introduce-right>h4>small,.compass-case>h4>small{
+    font-size: 12px;
+    margin-left: 12px;
+    color: #666;
+}
+.compass-introduce-right>p,.compass-case>p{
+    margin: 35px auto 0;
+    width: 90%;
+    font-size: 14px;
+    line-height: 22px;
+    color: #222;
+}
+.pic-index{
+    margin-right: 3px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+    background-image: url("../images/yuan.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}

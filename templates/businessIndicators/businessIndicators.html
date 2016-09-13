@@ -1,0 +1,233 @@
+<div ms-controller="businessIndicatorsCtrl" class="container-fluid magb15">
+    <div class="row box magt0">
+        <div class="box-head">
+            <i class="dashboard"></i><span>我的{{month}}月经营指标</span>
+        </div>
+        <div class="box-pane clearfix padlrt0">
+            <div class="panes col-lg-6 col-md-6 col-dm-6 col-xs-6">
+                <div class="scrollchart">
+                    <div class="box-titles clearfix">
+                        <div class="clearfix">
+                            <div class="box-title blocks">当月指标</div>
+                            <span class="dengpao"> <i></i>点击以下某一指标曲线可以在右侧查看历史记录</span>
+                        </div>
+                    </div>
+                    <div class="businessCharts charts-head-box">
+                        <div class="charts-head">当月总销售额 <span>{{createDataArray.saleArray.saleamt}}千元</span></div>
+                        <div class="charts-tips">
+                            <div class="text-right">月至今同比：<span ms-class="{{createDataArray.saleArray.yoy_comp_rate>0?'red':(createDataArray.saleArray.yoy_comp_rate<0?'green':'')}}">{{createDataArray.saleArray.yoy_comp_rate}}%</span></div>
+                            <div class="text-right">月至今环比：<span ms-class="{{createDataArray.saleArray.mom_comp_rate>0?'red':(createDataArray.saleArray.mom_saleamt_diff<0?'green':'')}}">{{createDataArray.saleArray.mom_comp_rate}}%</span></div>
+                        </div>
+                    </div>
+                    <div id="saleamtChart" class="businessChartBox rtl-chart-zIndex" ms-click="chartEvt"></div>
+                    <div class="businessCharts charts-head-box">
+                        <div class="charts-head">当月总净进货额 <span>{{createDataArray.purchaseArray.pure_purchase}}千元</span></div>
+                        <div class="charts-tips">
+                            <div class="text-right">月至今同比：<span ms-class="{{createDataArray.purchaseArray.yoy_comp_rate_pp>0?'red':(createDataArray.purchaseArray.yoy_comp_rate_pp<0?'green':'')}}">{{createDataArray.purchaseArray.yoy_comp_rate_pp}}%</span></div>
+                            <div class="text-right">月至今环比：<span ms-class="{{createDataArray.purchaseArray.mom_comp_rate_pp>0?'red':(createDataArray.purchaseArray.mom_comp_rate_pp<0?'green':'')}}">{{createDataArray.purchaseArray.mom_comp_rate_pp}}%</span></div>
+                        </div>
+                    </div>
+                    <div id="purchaseChart" class="businessChartBox rtl-chart-zIndex" ms-click="chartEvt"></div>
+                    <div class="businessCharts charts-head-box">
+                        <div class="charts-head">当月高库存占比 <span>{{createDataArray.highStockArray.high_stock_rate}}%</span></div>
+                        <div class="charts-tips">
+                            <div class="text-right">去年同期：<span ms-class="{{createDataArray.highStockArray.yoy_high_stock_rate>0?'red':(createDataArray.highStockArray.yoy_high_stock_rate<0?'green':'')}}">{{createDataArray.highStockArray.yoy_high_stock_rate}}%</span></div>
+                            <div class="text-right">上月月底：<span ms-class="{{createDataArray.highStockArray.mom_high_stock_rate>0?'red':(createDataArray.highStockArray.mom_high_stock_rate<0?'green':'')}}">{{createDataArray.highStockArray.mom_high_stock_rate}}%</span></div>
+                        </div>
+                    </div>
+                    <div id="highStockChart" class="businessChartBox rtl-chart-zIndex" ms-click="chartEvt"></div>
+                    <div class="businessCharts charts-head-box">
+                        <div class="charts-head">当月到货满足率 <span>{{createDataArray.receiveArray.rcv_rate}}%</span></div>
+                        <div class="charts-tips">
+                            <div class="text-right">去年同期：<span ms-class="{{createDataArray.receiveArray.yoy_rcv_rate>0?'red':(createDataArray.receiveArray.yoy_rcv_rate<0?'green':'')}}">{{createDataArray.receiveArray.yoy_rcv_rate}}%</span></div>
+                            <div class="text-right">上月月底：<span ms-class="{{createDataArray.receiveArray.mom_rcv_rate>0?'red':(createDataArray.receiveArray.mom_rcv_rate<0?'green':'')}}">{{createDataArray.receiveArray.mom_rcv_rate}}%</span></div>
+                        </div>
+                    </div>
+                    <div id="receiveChart" class="businessChartBox rtl-chart-zIndex" ms-click="chartEvt"></div>
+                    <!--<div class="businessCharts charts-head-box">-->
+                        <!--<div class="charts-head">当月退货率 <span>{{createDataArray.returnArray.return_rate}}%</span></div>-->
+                        <!--<div class="charts-tips">-->
+                            <!--<div class="text-right">月至今环比增减额：<span ms-class="{{createDataArray.returnArray.mom_comp_diff_rr>0?'red':(createDataArray.returnArray.mom_comp_diff_rr<0?'green':'')}}">{{createDataArray.returnArray.mom_comp_diff_rr}}%</span></div>-->
+                            <!--<div class="text-right">月至今环比：<span ms-class="{{createDataArray.returnArray.mom_comp_rate_rr>0?'red':(createDataArray.returnArray.mom_comp_rate_rr<0?'green':'')}}">{{createDataArray.returnArray.mom_comp_rate_rr}}%</span></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div id="returnChart" class="businessChartBox rtl-chart-zIndex" ms-click="chartEvt"></div>-->
+                </div>
+            </div>
+            <div class="panes col-lg-6 col-md-6 col-dm-6 col-xs-6">
+                <div class="fixchart">
+                    <div class="box-titles clearfix">
+                        <div class="clearfix">
+                            <div class="box-title">历史记录-<span id="rightBoxTitle">当月总销售额</span></div>
+                            <div class="form-inline pull-right ">
+                                <div id="timepicker" class="rtl-data" style="display: inline-block;"></div>
+                                <div class="box-btn box-btn-blue pull-right" style="margin-left: 15px;padding: 10px 0" ms-click="getHistoryData">查询</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rightChart" class="charts rtl-chart-zIndex" style="height: 350px;margin-top: 85px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box-titles clearfix">
+            <div class="clearfix magb15">
+                <div class="box-title">商品月指标</div>
+                <span class="rtl-color7a8">数据收集时间:{{createDataArray.compassTime.last_shop_hour_end}}</span>
+                <div class="form-search-box pull-right">
+                    <input id="goodInput" autocomplete="off" class="form-control" type="text" placeholder="输入商品SKU" ms-click="disableEvt" ms-duplex="goods.goodsSku">
+                    <span>或</span>
+                    <select id="goodSelect" class="form-control form-search-disabled" ms-click="disableEvt">
+                        <option ms-repeat="createDataArray.emcList" ms-attr-value="el[0]">{{el[1]}}</option>
+                    </select>
+                    <div class="box-btn box-btn-blue pull-right" ms-click="tableSearch">
+                        查询
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ms-visible="goodVisibleCtrl">
+            <div ms-visible="createDataArray.customerGoodName!=''" class="table-box-title">商品名称： {{createDataArray.customerGoodName}}</div>
+        </div>
+        <div class="box-table">
+            <table id="monthTable">
+                <thead>
+                <tr>
+                    <th>销售额排名</th>
+                    <th><a class="sort desc businessSort" month-sort="amt" ms-click="sortEvt">总销售额(千元)</a></th>
+                    <th><a class="sort businessSort" month-sort="num" ms-click="sortEvt">总销售量</a></th>
+                    <th>商品名称</th>
+                    <th>商品编号</th>
+                    <th>商品品类</th>
+                    <th><a class="sort businessSort" month-sort="amt" ms-click="sortEvt">行业销售额排名</a></th>
+                    <th><a class="sort businessSort" month-sort="amt_change" ms-click="sortEvt">行业销售额排名增幅</a></th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ms-repeat="createTableData.tableList">
+                    <td>{{el.rank_amt_vendor}}</td>
+                    <td>{{el.saleamt}}</td>
+                    <td>{{el.salenum}}</td>
+                    <td class="good-name"><a class="tooltip-show rtl-tips-box" data-toggle="tooltip" data-placement="right" ms-attr-title="{{el.sku_name}}">{{el.sku_name}}</a>
+                    </td>
+                    <td class="good-sku">{{el.sku}}</td>
+                    <td>{{el.emc_name}}</td>
+                    <td>{{el.rank_amt_emc}}</td>
+                    <td><a ms-class="{{el.rank_amt_change>0?'up':(el.rank_amt_change<0?'down':'')}}">{{el.rank_amt_change<0?Math.abs(el.rank_amt_change):el.rank_amt_change}}</a></td>
+                    <td class="options">
+                        <span data-toggle="modal" data-target="#myModalA" ms-click="seeModalStock">实时信息</span>
+                        <span data-toggle="modal" data-target="#myModal" ms-click="seeModalLine">行情信息</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="tablePage" class="rtl-paging mt20"></div>
+        </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade rtl-modal-fade" id="myModalA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title">
+                        单品实时查询(每小时更新)<span>数据收集时间:{{createDataArray.compassTime.last_shop_hour_end}}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-charttitle">
+                        <span>商品名称：{{createDataArray.goodName}}</span>
+                        <span>商品编码：{{createDataArray.goodSku}}</span>
+                    </div>
+                    <div class="form-inline pull-right">
+                        <div class="box-btn box-btn-blue pull-right" style="margin-left: 15px;padding: 10px 0" ms-click="modalStockSearch">查询</div>
+                        <div class="modal-search-box pull-right">
+                            <input id="siteModalChoice" class="form-control pull-right png storeCheck input-readonly-white" type="text" placeholder="所有门店" style="width: 155px;" readonly autocomplete="off"/>
+                            <div class="pa rtl-menu-box">
+                                <h3 class="title">选择全部门店</h3>
+                                <div class="all-site-box">
+                                    <label>
+                                        <input id="allSite" type="radio" ms-click="setSiteAll"> 全部门店
+                                    </label>
+                                </div>
+                                <h3 class="title">按区域搜索</h3>
+                                <div class="search-main-box">
+                                    <input id="siteInputBox" autocomplete="off" class="form-control mb10" type="text" ms-on-keyup="autoEvt"/>
+                                    <div class="search-list" ms-visible="autoCompleteArray.length>0">
+                                        <ul class="list-unstyled">
+                                            <li ms-click="setSiteOne" ms-repeat="autoCompleteArray" ms-attr-value="el.code">{{el.name}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="search-area">
+                                        <span>支持华北地区门店（北京、天津、河北）</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="charts-box container-fluid">
+                        <div class="row items">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-right: 0;">
+                                <div class="item">
+                                    <p class="nub" ms-if="modalInfo.price!='0' && modalInfo.price!='0.00'">{{modalInfo.price}}<span>元</span></p>
+                                    <p class="nub" ms-if="modalInfo.price=='0' || modalInfo.price=='0.00'">暂无时段价格</p>
+                                    <p class="text">实时价格(平均价格)</p>
+                                    <div id="modalStock1" class="map-box"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-right: 0;">
+                                <div class="item">
+                                    <p class="tc nub">{{modalInfo.sale}}<span>千元</span></p>
+                                    <p class="tc text">实时销售额(日累计)</p>
+                                    <div id="modalStock2" class="map-box"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-right: 0;">
+                                <div class="item">
+                                    <p class="tc nub">{{modalInfo.num}}<span>件</span></p>
+                                    <p class="tc text">实时销售量(日累计)</p>
+                                    <div id="modalStock3" class="map-box"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-right: 0;">
+                                <div class="item">
+                                    <p class="tc nub">暂不支持</p>
+                                    <!--这个新增的class只是暂时的，以后有图了要去掉-->
+                                    <p class="tc text item-sale-box"></p>
+                                    <div id="modalStock4" class="map-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade rtl-modal-fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        商品销售走势<span>数据收集时间:{{createDataArray.compassTime.last_shop_hour_end}}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-charttitle">
+                        <span>商品名称：{{createDataArray.goodName}}</span>
+                        <span>商品编码：{{createDataArray.goodSku}}</span>
+                    </div>
+                    <div class="form-inline pull-right ">
+                        <div id="timepickerB" class="rtl-data" style="display: inline-block;"></div>
+                        <div class="box-btn box-btn-blue pull-right" style="margin-left: 15px;padding: 10px 0" ms-click="modalLineSearch">查询</div>
+                    </div>
+                    <div id="modalLineChart" class="charts"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

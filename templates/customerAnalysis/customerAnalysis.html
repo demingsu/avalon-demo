@@ -1,0 +1,92 @@
+<div ms-controller="customerAnalysisCtrl" class="container-fluid magb15" style="padding: 0;">
+    <div class="row goods-Choice" style="height: 70px;">
+        <div class="box-titles clearfix" style="padding: 15px 0;margin-top: 7px;">
+            <div class="clearfix ">
+                <div class="box-title-noborder">商品选择</div>
+            </div>
+        </div>
+        <div class="goods-customer-box">
+            <div class="goods-customer-box-tip">根据我的商品查询</div>
+            <input id="goodInputBox" type="text" class="form-control" placeholder="输入商品SKU" autocomplete="off">
+            <div class="box-btn box-btn-blue" ms-click="searchGoodEvt">查询</div>
+        </div>
+    </div>
+    <div id="goodMainBox" class="good-main-box">
+        <div class="row box">
+            <div class="box-head">
+                <i class="customer"></i><span>顾客分析</span>
+            </div>
+            <div class="customer-box-title mt20 mb10">商品名称： {{createData.customerGoodName}}</div>
+            <div class="box-pane clearfix" style="padding: 0 34px;">
+                <div class="panes col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div id="sexChart" class="pane-blue rtl-chart-zIndex"></div>
+                    <div id="ageChart" class="pane-blue rtl-chart-zIndex"></div>
+                </div>
+                <div class="panes col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div id="levelChart" class="pane-blue rtl-chart-zIndex"></div>
+                    <div id="payChart" class="pane-blue rtl-chart-zIndex"></div>
+                </div>
+            </div>
+            <div class="box-titles clearfix">
+                <div class="clearfix mb10">
+                    <div class="box-title" style="margin-left: 14px;">消费时间分布</div>
+                    <span class="rtl-color7a8">数据收集时间:{{createData.last_shop_hour_end}}</span>
+                    <div class="box-input form-inline pull-right pr15">
+                        <div id="timepicker" class="pull-left"></div>
+                        <div class="box-btn box-btn-blue pull-right" ms-click="saleTimeEvt">查询</div>
+                    </div>
+                </div>
+            </div>
+            <div class="customer-box-title">商品名称： {{createData.customerGoodName}}</div>
+            <div id="saleTimeChart" class="charts rtl-chart-zIndex"></div>
+        </div>
+        <div class="row box" style="margin-bottom: 230px;overflow: visible;">
+            <div class="box-head">
+                <i class="shop"></i><span>门店分析</span>
+            </div>
+            <div class="box-titles clearfix">
+                <div class="clearfix magb15">
+                    <div class="box-title" style="margin-left: 14px;">门店销售量排行</div>
+                    <span class="rtl-color7a8">数据收集时间:{{createData.last_shop_hour_end}}</span>
+                    <div class="box-input form-inline pull-right pr15">
+                        <div id="timepicker2" class="pull-left"></div>
+                        <div class="box-btn box-btn-blue pull-right" ms-click="saleAreaEvt('desc')">查询</div>
+                    </div>
+                </div>
+            </div>
+            <div class="customer-box-title mb10">商品名称： {{createData.customerGoodName}}</div>
+            <div class="box-table pl15 pr15">
+                <table id="customerTableList" style="margin-bottom: 0;">
+                    <thead>
+                    <tr>
+                        <th style="min-width: 120px;">
+                            <div class="rtl-sort-box" rtl-select-box="box">
+                                <i class="i-sort-box" sort-icon="sort">销售量排行</i>
+                                <ul class="rtl-select-box" sort-box="sort">
+                                    <li rtl-select="up" class="select-li active"><i class="dot-icon">·</i>销量从高到低(top10)</li>
+                                    <li rtl-select="down" class="select-li"><i class="dot-icon">·</i>销量从低到高(bottom10)</li>
+                                </ul>
+                            </div>
+                        </th>
+                        <th>门店名称</th>
+                        <th>所属区域</th>
+                        <th>门店业态</th>
+                        <th><a class="sort" ms-click="tableSort">排名变化</a></th>
+                        <th>在榜时间(天)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ms-repeat="tableList">
+                        <td>{{el.rank}}</td>
+                        <td>{{el.site_name}}</td>
+                        <td>{{el.bezei}}</td>
+                        <td>{{el.indu_name}}</td>
+                        <td><a ms-class="{{el.rank_change>0?'up':(el.rank_change<0?'down':'')}}">{{el.rank_change<0?Math.abs(el.rank_change):el.rank_change}}</a></td>
+                        <td>{{el.list_days}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
